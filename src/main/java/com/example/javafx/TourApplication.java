@@ -8,14 +8,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class TourApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("tour-view.fxml"));
         Parent parent = fxmlLoader.load();
         Scene scene = new Scene(parent);
-        stage.setTitle("Hello!");
+        stage.setTitle("Tour App");
         stage.setScene(scene);
         stage.show();
     }

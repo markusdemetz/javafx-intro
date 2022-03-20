@@ -1,15 +1,14 @@
 package com.example.javafx;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.example.javafx.business.MyTourManager;
+import com.example.javafx.business.TourManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
@@ -19,7 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class TourController implements Initializable {
 
     @FXML
     private TextField listField;
@@ -48,9 +47,11 @@ public class HelloController implements Initializable {
     @FXML
     private BorderPane borderPane;
 
-    private ObservableList<String> listItems;
+    private TourVM tourVM;
 
-    public HelloController() {
+    public TourController() {
+        TourManager manager = new MyTourManager();
+        this.tourVM = new TourVM(manager);
     }
 
     @FXML
@@ -89,8 +90,8 @@ public class HelloController implements Initializable {
             ((Stage)borderPane.getScene().getWindow()).close();;
         });
 
-        listItems = FXCollections.observableArrayList("Item 1", "Item 2", "Item 3");
-        listView.setItems(listItems);
+        listView.setItems(tourVM.getListItems());
+
 
 
         listView.setOnMouseClicked(e -> {
@@ -100,7 +101,7 @@ public class HelloController implements Initializable {
         });
 
         addButton.setOnMouseClicked(e -> {
-            listItems.add(listField.textProperty().get());
+            tourVM.add(listField.textProperty().get());
         });
 
 
