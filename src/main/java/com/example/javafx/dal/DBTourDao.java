@@ -6,6 +6,12 @@ import java.util.List;
 
 public class DBTourDao implements TourDao {
 
+    private final Database database;
+
+    public DBTourDao(Database database) {
+        this.database = database;
+    }
+
     @Override
     public List<Tour> findAll() {
         throw new UnsupportedOperationException("To implement!");
