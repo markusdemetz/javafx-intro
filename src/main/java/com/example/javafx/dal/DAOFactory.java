@@ -38,7 +38,7 @@ public class DAOFactory {
 
     public TourDao getTourDao() {
         if (tourDao == null) {
-            this.tourDao = new DBTourDao(db);
+            this.tourDao = new DBTourDao();
         }
         return tourDao;
     }

@@ -1,6 +1,8 @@
 package com.example.javafx.model;
 
 public class Tour {
+
+    private Long id;
     private String name;
     private String description;
 
@@ -11,6 +13,14 @@ public class Tour {
     public Tour(String name, String description) {
         this.name = name;
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
