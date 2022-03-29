@@ -94,11 +94,12 @@
    <center>
       <SplitPane dividerPositions="0.5" BorderPane.alignment="CENTER">
          <items>
-            <ListView fx:id="listView" />
-            <TableView>
+            <ListView fx:id="listView" maxWidth="200.0" />
+            <TableView fx:id="tableView">
               <columns>
                 <TableColumn prefWidth="75.0" text="Id" />
                 <TableColumn prefWidth="75.0" text="Name" />
+                  <TableColumn prefWidth="75.0" text="Description" />
               </columns>
             </TableView>
          </items>

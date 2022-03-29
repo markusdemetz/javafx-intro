@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -28,6 +29,9 @@ public class TourController implements Initializable {
 
     @FXML
     private ListView listView;
+
+    @FXML
+    private TableView<TourTableRow> tableView;
 
     @FXML
     private ImageView imageView;
@@ -91,9 +95,6 @@ public class TourController implements Initializable {
         });
 
         listView.setItems(tourVM.getListItems());
-
-
-
         listView.setOnMouseClicked(e -> {
            listView.getSelectionModel().getSelectedItems().forEach(i -> {
                System.out.println(i);
@@ -104,6 +105,11 @@ public class TourController implements Initializable {
             tourVM.add(listField.textProperty().get());
         });
 
+        tableView.setPlaceholder(new Label("No Tours available!"));
+        tableView.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
+        tableView.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
+        tableView.getColumns().get(2).setCellValueFactory(new PropertyValueFactory<>("description"));
 
+        tableView.setItems(tourVM.getTableRows());
     }
 }

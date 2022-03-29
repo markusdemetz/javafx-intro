@@ -26,6 +26,20 @@ public class InMemoryDatabase implements Database {
         return database.get(table).values();
     }
 
+    public Map<String, Object> read(Class<?> table, Long id) {
+        return database.get(table).get(id);
+    }
+
+    public boolean delete(Class<?> table, Long id) {
+        return database.get(table).remove(id) != null;
+    }
+
+    public void update(Class<?> table, Long id, List<String> columnNames, List<Object> values) {
+        Map<String, Object> row = createRow(columnNames, values);
+        row.put("id", id);
+        database.get(table).put(id, row);
+    }
+
     private Map<String, Object> createRow(List<String> columnNames, List<Object> values) {
         Map<String, Object> row = new HashMap<>();
         for (int i = 0; i < columnNames.size(); i++) {

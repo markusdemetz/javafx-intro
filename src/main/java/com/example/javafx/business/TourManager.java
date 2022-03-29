@@ -8,6 +8,7 @@ public interface TourManager {
 
     void addTourListener(TourListener listener);
     void addTour(String name, String description);
-    List<String> getTours();
+    List<Tour> getTours();
+
 
 }

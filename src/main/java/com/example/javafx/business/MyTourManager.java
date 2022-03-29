@@ -23,8 +23,8 @@ public class MyTourManager implements TourManager {
         fireToursChanged();
     }
 
-    public List<String> getTours() {
-        return tourDao.findAll().stream().map(t -> t.getName()).collect(Collectors.toList());
+    public List<Tour> getTours() {
+        return tourDao.findAll();
     }
 
     public void addTourListener(TourListener listener) {
